@@ -3,7 +3,7 @@ title: Templates
 email: barry@br-web.io
 description:
    Repository of website templates and components
-baseurl: ""
+baseurl: "/"
 url: ""
 
 # Build settings
