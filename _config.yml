@@ -1,0 +1,14 @@
+# Site settings
+title: Oppa and Minny blog
+email: barry@br-web.io
+description:
+   We review anything and everything.
+baseurl: ""
+url: ""
+
+# Build settings
+markdown: kramdown
+port: 4000
+livereload: true
+permalink: pretty
+include: ["_pages"]

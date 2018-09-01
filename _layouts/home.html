@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+<head>
+  {% include head.html %}
+</head>
+
+  <body>
+    <header>
+        {% include header.html %}
+    </header>
+
+    {{page.title}}
+    
+    <main>
+      <p>Homepage</p>
+
+      <ul>
+        {% for post in site.posts %}
+          <li>
+            <a href="{{ post.url }}">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+      
+    </main>
+
+    <footer>
+        {% include footer.html %}
+    </footer>
+
+
+  {% include scripts.html %}
+  
+  </body>
+</html>
