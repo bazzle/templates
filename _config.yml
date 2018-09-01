@@ -1,8 +1,8 @@
 # Site settings
-title: Oppa and Minny blog
+title: Templates
 email: barry@br-web.io
 description:
-   We review anything and everything.
+   Repository of website templates and components
 baseurl: ""
 url: ""
 

@@ -1,0 +1,139 @@
+.header{
+  a:hover{
+    background-color:transparent;
+  }
+}
+
+.header-inner{
+  display:grid;
+  grid-template-columns:1fr auto;
+  width:100%;
+  padding-left:0;
+  padding-right:0;
+}
+
+.logo{
+  height:$header-height;
+  padding-left:2rem;
+  display:flex;
+  align-items:center;
+}
+
+#nav-toggle-cb{
+  display:none;
+}
+.nav-toggle{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:auto;
+  height:$header-height;
+  cursor:pointer;
+  background-color:$darken-overlay;
+}
+.nav{
+  @media screen and (max-width:"800px"){
+    position:absolute;
+    top:100%;
+    background-color:$color-brand;
+    width:100%;
+    transform:scale(1,0);
+    transform-origin:top;
+    transition:transform .3s ease-in-out;
+  }
+  
+  &__list{
+    li{
+      border-bottom:1px solid rgba(black, .2);
+      display:flex;
+      height:60px;
+      align-items:center;
+      justify-content:flex-end;
+      a{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        height:60px;
+        text-align:right;
+        opacity:0;
+        padding:.8rem;
+        padding-left:2rem;
+        padding-right:2rem;
+      }
+    }
+  }
+}
+
+.nav-toggle{
+  span{
+    margin-left:2rem;
+    margin-right:.5rem;
+  }
+  i{
+    margin-left:.5rem;
+    margin-right:2rem;
+    transition:rotate, .5s;
+  }
+}
+
+.nav-open{
+  .nav{
+    transform:scale(1,1);
+    li{
+      a{
+        opacity:1;
+        transition:opacity .5s ease-in-out .2s;
+      }
+    }
+  }
+  .nav-toggle{
+    i{
+      transform:rotate(90deg);
+      transition:rotate, .5s;
+    }
+  }
+}
+
+.main{
+  height:1200px;
+  background-image:url(https://placeimg.com/1000/800/any);
+  background-size:cover;
+}
+
+
+@media screen and (min-width:"800px"){
+  
+  .header{
+    grid-template-columns:auto 1fr;
+  }
+  
+  .nav{
+    &__list{
+      display:flex;
+      height:$header-height;
+      align-items:center;
+      justify-content:flex-end;
+      li{
+        display:flex;
+        height:$header-height;
+        align-items:center;
+        justify-content:flex-end;
+        border-bottom:0;
+        a{
+          opacity:1;
+          height:80px;
+          border-bottom:2px solid transparent;
+          &:hover{
+            border-bottom:2px solid black;
+            background-color:$color-brand;
+          }
+        }
+      }
+    }
+  }
+  
+  .nav-toggle{
+    display:none;
+  }
+  
+}

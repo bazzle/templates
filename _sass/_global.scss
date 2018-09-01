@@ -1,0 +1,411 @@
+///////// RESET ////////////////////////////////////////////////////////////////////////
+
+
+html, body{
+  padding:0;
+  margin:0;
+}
+
+// To make every element border-box, and remove margin/padding
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+button{
+  border:0;
+}
+
+*, *:before, *:after{
+  box-sizing:border-box;
+}
+
+
+///////// MIXINS AND VARIABLES ////////////////////////////////////////////////////////////////////////
+
+
+// paths
+$path-images: "../assets/images";
+
+// site width: 
+$site-width:900px;
+
+// media queries
+$bp1: 750px;
+$bp2: 1000px;
+$bp3: $site-width;
+
+// breakpoint mixins
+@mixin bp($breakpoint){
+  @media only screen and (min-width:$breakpoint) {
+      @content;
+  }
+}
+
+// colors
+$color-brand:gold;
+$color-accent:yellow;
+$color-dark-gray:#4B4B4B;
+$black:#555555;
+$white: #ffffff;
+$darken-overlay:rgba(black, .05);
+$white-darken:darken($white, 5);
+$black-lighten:lighten($black, 20);
+
+// font loading
+//@import url();
+
+
+// fonts
+$font-brand:sans-serif;
+$font-std:sans-serif;
+$font-display:sans-serif;
+
+// font-size;
+$font-size-base:62.5%;
+$font-size-std:1.8rem;
+
+// font weights
+$thin:400;
+$std:400;
+$bold:500;
+$extrabold:500;
+
+// font margins
+$margin-std:1.5rem;
+
+// line height
+$line-height:1.7;
+
+// underline
+@mixin text-underline($color){
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    text-decoration-color: $color;
+}
+
+// text display
+@mixin text-display($font-size){
+  font-family:$font-display;
+  font-weight:$bold;
+  font-size:$font-size;
+  line-height: 1.4;
+  p{
+    line-height: 1.4;
+  }
+}
+
+@mixin text-leadin($font-size){
+  font-family:$font-display;
+  font-weight:$std;
+  font-size:$font-size;
+  line-height: 1.4;
+  p{
+    line-height: 1.4;
+  }
+}
+
+@mixin text-tiny{
+    color:$black-lighten;
+    font-size:.8em;
+}
+
+// text body
+@mixin text-body{
+  font-family:$font-std;
+  line-height:$line-height;
+  strong{
+    font-weight:$bold;
+  }
+  h1, h2, h3, h4, h5{
+    @include text-display(1.4em);
+    color:$black;
+    padding:0;
+    margin:0;
+    margin-bottom:$margin-std;
+    font-weight:$bold;
+  }
+  p, ol, ul{
+    padding:0;
+    margin:0;
+    margin-bottom:$margin-std;
+  }
+  ul{
+    padding-left:1em;
+    box-sizing:border-box;
+  }
+  li{
+    width:calc(100% - 1em);
+    list-style:none;
+    position:relative;
+    &:before{
+      content:'\25A0';
+      color:$color-accent;
+      margin-right:.5em;
+    }
+  }
+  & > *:last-child{
+    margin-bottom:0;
+    padding-bottom:0;
+  }
+}
+
+// link color
+$link-color:$black;
+
+// text shadow
+$text-shadow-std: 1px 1px 2px $black;
+
+// raised item shadow
+$shadow:3px 3px 3px rgba(93, 93, 93, 0.1);
+
+// lines
+$line-solid: 1px;
+$line-thick: 2px;
+
+// borders
+
+$border-feint: rgba($black, 0.2) solid 1px;
+$border-accent: $color-accent solid 2px;
+$border-accent-feint: rgba($color-accent, 0.2) solid 1px;
+
+
+///////// LAYOUT AND GRID ////////////////////////////////////////////////////////////////////////
+
+.row{
+  width:90vw;
+  padding-left:5vw;
+  padding-right:5vw;
+  max-width:$site-width;
+  margin:0 auto;
+  position:relative;
+  height:100%;
+  @include bp($bp3){
+    width:100vw;
+    padding-left:0;
+    padding-right:0;
+  }
+}
+
+main{
+}
+
+
+
+
+
+
+
+
+@mixin col-std($width){
+  width:100%;
+  @include bp($bp1){
+    width:$width;
+    margin-left:25%;
+  }
+}
+
+// header
+$header-height:80px;
+
+// margin on mobile
+$textmarginmobile:4rem;
+
+// Aspect ratios
+$aspect_1-1: 100%;
+$aspect_16-9: 56.25%;
+$aspect_4-3: 75%;
+$aspect_3-2: 66.66%;
+$aspect_8-5: 62.5%;
+
+// Spacing
+$padding-std:2.5rem;
+
+// syled links
+@mixin link-styled{
+  @include text-underline($color-accent);
+  font-weight:$bold;
+}
+
+// mobile text margin
+@mixin mobile-text-margin{
+  max-width:90vw;
+  padding-left:5vw;
+  padding-right:5vw;
+}
+
+// Turn button into inline link
+@mixin button-inline{
+  border-radius: 0;
+  border:none;
+  display:inline;
+  padding:0;
+  font-family:inherit;
+  cursor:pointer;
+  color:$link-color;
+}
+
+// Align
+@mixin align-left{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+}
+@mixin align-left-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:flex-start;
+}
+@mixin align-left-bottom{
+    display:flex;
+    align-items:flex-end;
+    justify-content:flex-start;
+}
+
+@mixin align-center{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+@mixin align-center-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+}
+@mixin align-center-bottom{
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+}
+
+@mixin align-right{
+    display:flex;
+    align-items:center;
+    justify-conten:flex-end;
+}
+@mixin align-right-top{
+    display:flex;
+    align-items:flex-start;
+    justify-conten:flex-start;
+}
+@mixin align-right-bottom{
+    display:flex;
+    align-items:flex-start;
+    justify-conten:flex-end;
+}
+
+
+///////// CLASSES ////////////////////////////////////////////////////////////////////////
+
+// html
+html {
+  font-family: $font-brand;
+  font-size:$font-size-base;
+}
+
+// body
+body {
+  font-size:$font-size-std;
+  line-height:$line-height;
+  color:$black;
+}
+
+// resets
+input, textarea, select, button{
+  font-size:inherit;
+}
+
+// resets
+p, ul, ol{
+  padding:0;
+  margin:0;
+  line-height:$line-height;
+  list-style:none;
+}
+
+// anchor
+a{
+  text-decoration: none;
+  color:inherit;
+  transition: all .3s;
+  &:hover{
+    background-color:$color-accent;
+  }
+}
+
+// headings
+h1, h2, h3, h4, h5{
+  font-size:$font-size-std;
+  font-weight:$std;
+  margin:0;
+  padding:0;
+}
+
+// button
+
+.button{
+  background-color:transparent;
+  border:0;
+  color:$black;
+  font-weight:$bold;
+  display:inline-block;
+  font-size:inherit;
+  line-height:1.4;
+  letter-spacing:.01em;
+  //transition:color .2s;
+  cursor:pointer;
+  span{
+    padding-right:.5em;
+    @include text-underline($color-accent);
+  }
+  &__inner{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+  }
+  &__icon{
+    display:block;
+    width:15px;
+    height:15px;
+    &--right{
+    }
+    &--down{
+      transform:rotate(90deg);
+    }
+    &--left{
+      transform:rotate(180deg);
+    }
+    &--up{
+      transform:rotate(270deg);
+    }
+  }
+}
+
+
+// screen reader only
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+// Turn button into inline link
+.button-inline{
+  @include button-inline;
+}
+
+// text no break
+.nobreak{
+  white-space: nowrap;
+}
+
+// 
