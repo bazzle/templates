@@ -119,17 +119,22 @@ h1, h2, h3, h4, h5 {
 .panel-post {
   padding-top: 1.5rem; }
 
-.header a:hover {
-  background-color: transparent; }
+.header {
+  height: 80px;
+  background-color: gold;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  font-weight: bold; }
 
 .header-inner {
   display: grid;
   grid-template-columns: 1fr auto;
-  width: 100%;
-  padding-left: 0;
-  padding-right: 0; }
+  width: 100%; }
 
-.logo {
+.site-logo {
   height: 80px;
   padding-left: 2rem;
   display: flex;
@@ -145,24 +150,24 @@ h1, h2, h3, h4, h5 {
   width: auto;
   height: 80px;
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.05); }
+  background-color: yellow; }
 
 @media screen and (max-width: 800px) {
-  .nav {
+  .site-nav {
     position: absolute;
     top: 100%;
-    background-color: gold;
+    background-color: yellow;
     width: 100%;
     transform: scale(1, 0);
     transform-origin: top;
     transition: transform .3s ease-in-out; } }
-.nav__list li {
+.site-nav__list li {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   display: flex;
   height: 60px;
   align-items: center;
   justify-content: flex-end; }
-  .nav__list li a {
+  .site-nav__list li a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -181,9 +186,9 @@ h1, h2, h3, h4, h5 {
   margin-right: 2rem;
   transition: rotate, .5s; }
 
-.nav-open .nav {
+.nav-open .site-nav {
   transform: scale(1, 1); }
-  .nav-open .nav li a {
+  .nav-open .site-nav li a {
     opacity: 1;
     transition: opacity .5s ease-in-out .2s; }
 .nav-open .nav-toggle i {
@@ -199,24 +204,25 @@ h1, h2, h3, h4, h5 {
   .header {
     grid-template-columns: auto 1fr; }
 
-  .nav__list {
+  .site-nav__list {
     display: flex;
     height: 80px;
     align-items: center;
     justify-content: flex-end; }
-    .nav__list li {
+    .site-nav__list li {
       display: flex;
       height: 80px;
       align-items: center;
       justify-content: flex-end;
       border-bottom: 0; }
-      .nav__list li a {
+      .site-nav__list li a {
         opacity: 1;
         height: 80px;
         border-bottom: 2px solid transparent; }
-        .nav__list li a:hover {
-          border-bottom: 2px solid black;
-          background-color: gold; }
+        .site-nav__list li a:hover {
+          border-bottom: 2px solid black; }
 
   .nav-toggle {
     display: none; } }
+
+/*# sourceMappingURL=main.css.map */

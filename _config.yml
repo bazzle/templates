@@ -12,3 +12,4 @@ port: 4000
 livereload: true
 permalink: pretty
 include: ["_pages"]
+exclude: ["package.json","package-lock.json","node_modules","gruntfile.js","styles/sass"]
